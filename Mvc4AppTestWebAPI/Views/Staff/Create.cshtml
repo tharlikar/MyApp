@@ -1,0 +1,105 @@
+﻿@model Mvc4AppTestWebAPI.Models.StaffCreateViewModel
+@section Csss {
+    
+}
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create.</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Staff.</h4>
+        <hr />
+        @Html.ValidationSummary(false)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+        </div>
+        <hr />
+        <h4>Store.</h4>
+        <hr />
+        <h4>Passport.</h4>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PassportNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PassportNo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PassportNo)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IssueDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.IssueDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IssueDate)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExpiredDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ExpiredDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ExpiredDate)
+            </div>
+        </div>
+        <h4>Wife.</h4>
+        <div class="form-group">
+            @Html.LabelFor(model => model.WifeFirstName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.WifeFirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.WifeFirstName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.WifeLastName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.WifeLastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.WifeLastName)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <script type="text/javascript">
+        var errors = @Html.Raw(
+            Json.Encode(
+                string.Join(
+                    Environment.NewLine, 
+                    ViewData.ModelState
+                            .Where(x => x.Value.Errors.Count > 0)
+                            .SelectMany(x => x.Value.Errors)
+                            .Select(error => error.ErrorMessage))
+                )
+        );
+        alert(errors);
+    </script>
+}

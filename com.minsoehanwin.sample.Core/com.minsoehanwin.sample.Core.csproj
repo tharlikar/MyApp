@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8A9E4AB8-3C48-4B7F-8302-406AE0B78E21}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>com.minsoehanwin.sample.Core</RootNamespace>
+    <AssemblyName>com.minsoehanwin.sample.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AspNetIdentity\Models\ApplicationRole.cs" />
+    <Compile Include="AspNetIdentity\Models\ApplicationRoleGroup.cs" />
+    <Compile Include="AspNetIdentity\Models\ApplicationUser.cs" />
+    <Compile Include="AspNetIdentity\Models\ApplicationUserClaim.cs" />
+    <Compile Include="AspNetIdentity\Models\ApplicationUserGroup.cs" />
+    <Compile Include="AspNetIdentity\Models\ApplicationUserLogin.cs" />
+    <Compile Include="AspNetIdentity\Models\ApplicationUserRole.cs" />
+    <Compile Include="AspNetIdentity\Models\Group.cs" />
+    <Compile Include="AspNetIdentity\Models\GroupResult.cs" />
+    <Compile Include="EmailEntity\Email.cs" />
+    <Compile Include="EmailEntity\EmailAttachment.cs" />
+    <Compile Include="EmailEntity\EmailBcc.cs" />
+    <Compile Include="EmailEntity\EmailCc.cs" />
+    <Compile Include="EmailEntity\EmailReceipient.cs" />
+    <Compile Include="EmailEntity\EmailTo.cs" />
+    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Models\BaseEntityClass.cs" />
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\PassportInfo.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Store.cs" />
+    <Compile Include="Models\AuditableEntity.cs" />
+    <Compile Include="Models\StoreProduct.cs" />
+    <Compile Include="Models\Wife.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IEmailRepository.cs" />
+    <Compile Include="Repositories\IEmployeeRepository.cs" />
+    <Compile Include="Repositories\IPassportInfoRepository.cs" />
+    <Compile Include="Repositories\IProductRepository.cs" />
+    <Compile Include="Repositories\IRepositoryBase.cs" />
+    <Compile Include="Repositories\IStoreRepository.cs" />
+    <Compile Include="Repositories\IWifeRepository.cs" />
+    <Compile Include="Services\IEmailClient.cs" />
+    <Compile Include="Services\IEmailService.cs" />
+    <Compile Include="Services\IEmployeeService.cs" />
+    <Compile Include="Services\IPassportInfoService.cs" />
+    <Compile Include="Services\IProductService.cs" />
+    <Compile Include="Services\IServiceBase.cs" />
+    <Compile Include="Services\IStoreService.cs" />
+    <Compile Include="Services\IWifeService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

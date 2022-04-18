@@ -1,0 +1,3 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" 
+    Service="com.minsoehanwin.sample.Wcf.Service.EmployeeService" 
+    Factory="com.minsoehanwin.sample.Helper.StructureMapServiceHostFactory" %>

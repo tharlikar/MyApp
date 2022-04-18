@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated) {
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })) {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="@ViewBag.ActiveManage">
+                @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage",@class="dropdown-toggle",data_toggle="dropdown"}).ToString().Replace("Hello " + User.Identity.GetUserName() + "!","Hello " + User.Identity.GetUserName() + "!"+"<span class='caret'></span>")*@
+                <a class="dropdown-toggle" data-toggle="dropdown" href="@Url.Action("Index","Manage")" title="Manage">Hello @User.Identity.GetUserName()!<span class='caret'></span></a>
+                <ul class="dropdown-menu">
+                        <li class="@ViewBag.ActiveManageSetting">@Html.ActionLink("Setting", "Index", "Manage")</li>
+                @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
+                    
+                        <li class="@ViewBag.ActiveRolesAdmin">@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                        <li class="@ViewBag.ActiveGroupsAdmin">@Html.ActionLink("GroupsAdmin", "Index", "GroupsAdmin")</li>    
+                        <li class="@ViewBag.ActiveUsersAdmin">@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                        <li class="@ViewBag.ActiveStaffAdmin">@Html.ActionLink("StaffAdmin", "Index", "Staff")</li>
+                }
+                    </ul>
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else {
+    <ul class="nav navbar-nav navbar-right">
+        <li class="@ViewBag.ActiveRegister">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li class="@ViewBag.ActiveLogin">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
