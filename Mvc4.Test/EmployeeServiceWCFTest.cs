@@ -112,7 +112,9 @@ namespace com.minsoehanwin.sample.Test
             {
                 return true;
             };
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(@"https://Dell-PC/WcfRestfulService/EmployeeRestfulService.svc/xml/1");
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(@"https://localhost:44302/WcfRestfulService/EmployeeRestfulService.svc/xml/1");
+
+            //HttpWebRequest req = (HttpWebRequest)WebRequest.Create(@"https://Dell-PC/WcfRestfulService/EmployeeRestfulService.svc/xml/1");
             //Add a header to the request that contains our credentials
             //DO NOT HARDCODE IN PRODUCTION!! Pull credentials real-time from database or other store.
             string svcCredentials = Convert.ToBase64String(ASCIIEncoding.ASCII.GetBytes("admin@example.com" + ":" + "Admin@123456"));
