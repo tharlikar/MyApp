@@ -27,6 +27,8 @@ namespace com.minsoehanwin.sample.Wcf.Service
                 var identityManager = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
                 {
+                    //userName and password are not provided by WCF client
+                    //but provided via Basic Authentication/Authorization HTTP header by Restful http request client.
                     var authHeader = WebOperationContext.Current.IncomingRequest.Headers["Authorization"];
                     if ((authHeader != null) && (authHeader != string.Empty))
                     {
@@ -38,6 +40,7 @@ namespace com.minsoehanwin.sample.Wcf.Service
                         password = svcCredentials[1];
                     }
                 }
+                //userName and password are provided by the WCF client via SSL
                 Task<ApplicationUser> user = identityManager.FindByNameAsync(userName);
                 Task<bool> loginSuccessFul = identityManager.CheckPasswordAsync(user.Result, password);
                 loginSuccess = loginSuccessFul.Result;
@@ -47,6 +50,7 @@ namespace com.minsoehanwin.sample.Wcf.Service
                     _logger.Info(msg);
                     throw new Exception(msg);
                 }
+                //Store ApplicationUser.Id in the global array to be used later by RoleAuthorizationManager
                 HttpContext.Current.Items.Add("userId", user.Result.Id);
             }
             catch (Exception ex)

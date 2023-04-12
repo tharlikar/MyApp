@@ -33,6 +33,11 @@ namespace com.minsoehanwin.sample.Wcf.Service
                 var identityManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 if (HttpContext.Current.Items["userId"] == null)
                 {
+                    //Actually this whole if block is unnecessary because
+                    //IdentityValidator already handled http basic Authentication
+                    //if HttpContext.Current.Items["userId"] == null , it will throw exception in IdentityValidator and 
+                    //willl not reach here.
+                    //This code block is redundent.
                     try
                     {
                         string userId = string.Empty;
@@ -71,6 +76,7 @@ namespace com.minsoehanwin.sample.Wcf.Service
                 }
                 else
                 {
+                    //retrieved role of login userId and put it in AuthorizationContext to be used later in EmployeeService role base authorization
                     var userId = HttpContext.Current.Items["userId"].ToString();
                     Task<IList<string>> roleNames = identityManager.GetRolesAsync(userId);
                     operationContext.ServiceSecurityContext.AuthorizationContext.Properties["Principal"] = new GenericPrincipal(operationContext.ServiceSecurityContext.PrimaryIdentity, roleNames.Result.ToArray());
