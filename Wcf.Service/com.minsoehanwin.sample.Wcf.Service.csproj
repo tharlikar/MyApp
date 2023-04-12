@@ -17,7 +17,7 @@
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <XsdCodeGenEnabled>True</XsdCodeGenEnabled>
     <FileUpgradeFlags>40</FileUpgradeFlags>
-    <UpgradeBackupLocation>C:\Users\tharl\source\repos\MyApp\Backup1\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>C:\Users\tharl\source\repos\MyApp\Backup3\</UpgradeBackupLocation>
     <OldToolsVersion>12.0</OldToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
