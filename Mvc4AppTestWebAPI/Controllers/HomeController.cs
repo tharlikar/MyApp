@@ -22,7 +22,7 @@ namespace Mvc4AppTestWebAPI.Controllers
         }
         public ActionResult Index()
         {
-            throw new Exception("oop");
+            //throw new Exception("oop");
             ViewBag.ActiveHome = "active";
             return View();
         }
